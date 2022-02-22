@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PolyMorphicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/laravel', function () {
     return view('welcome');
 });
+
+Route::get('/',function(){
+    return view('form');
+});
+
+Route::get('/content-view',[PolyMorphicController::class,'view'])->name('view');
+Route::post('/submit',[PolyMorphicController::class,'submit'])->name('submit-form');
+Route::post('/add-comment',[PolyMorphicController::class,'comment'])->name('view');
+
